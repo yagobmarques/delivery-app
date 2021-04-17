@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "877913190363",
+    "project_id": "delivery-gas-water",
+    "storage_bucket": "delivery-gas-water.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877913190363:android:9695992b2d5350701041fe",
+        "android_client_info": {
+          "package_name": "com.example.delivery_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877913190363-aumrb7pp5fceq5ikve56a27ovsrrnekj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCseyB5eWprgFRVY6vRpmPLGBAfTAtt1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877913190363-aumrb7pp5fceq5ikve56a27ovsrrnekj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
