@@ -28,13 +28,14 @@ class MyApp extends StatelessWidget {
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<UserModel>(builder: (context, child, model) {
+    
+    return ScopedModelDescendant<UserModel>(
+      builder: (context, child, model) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(model.userData["name"]?? "Entre para ver o nome"),
+        title: Text("Olá, ${!model.isLoggedIn() ? "" : model.userData["name"]}",),
           centerTitle: true,
           actions: [
             IconButton(

@@ -6,6 +6,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:flutter/material.dart';
 
 class UserModel extends Model {
+  
   FirebaseAuth _auth = FirebaseAuth.instance; //Singleton
 
   FirebaseUser firebaseUser;
@@ -30,8 +31,9 @@ class UserModel extends Model {
     isLoading = true;
     notifyListeners();
     try {
-      _auth.createUserWithEmailAndPassword(
+      await _auth.createUserWithEmailAndPassword(
           email: userData["email"], password: pass);
+      firebaseUser = await _auth.currentUser() as FirebaseUser ;
       await _saveUserData(userData);
       await _loadCurrentUser();
       onSuccess();
@@ -59,7 +61,7 @@ class UserModel extends Model {
       isLoading = false;
       notifyListeners();
     } catch (e) {
-      print(e.toString());
+      print("eu\n\n"+e.toString());
       onFail();
       isLoading = false;
       notifyListeners();
@@ -94,13 +96,11 @@ class UserModel extends Model {
   Future<Null> _loadCurrentUser() async {
     if (firebaseUser == null) firebaseUser = await _auth.currentUser();
     if (firebaseUser != null) {
-      if (userData["name"] == null) {
-        DocumentSnapshot docUser = await Firestore.instance
+      DocumentSnapshot docUser = await Firestore.instance
             .collection("users")
             .document(firebaseUser.uid)
             .get();
-        userData = docUser.data;
-      }
+        this.userData = docUser.data;
     }
     notifyListeners();
   }
