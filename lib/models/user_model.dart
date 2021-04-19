@@ -38,6 +38,7 @@ class UserModel extends Model {
       isLoading = false;
       notifyListeners();
     } catch (e) {
+      print(e.toString()+"bilbo\n");
       onFail();
       isLoading = false;
       notifyListeners();
