@@ -42,6 +42,7 @@ dependencies:
   scoped_model: ^1.1.0
   path_provider: ^2.0.1
   url_launcher: ^6.0.3
+  brasil_fields: ^1.1.1
 
 dev_dependencies:
   flutter_test:
