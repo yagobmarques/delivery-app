@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:delivery_app/screens/supplier_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -12,7 +13,11 @@ class SupplierTile extends StatelessWidget {
     return SizedBox(
       height: 200,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(
+          MaterialPageRoute(builder: (context)=>SupplierScreen(snapshot))
+        );
+        },
         child: Container(
           padding: EdgeInsets.all(10),
           margin: EdgeInsets.only(bottom: 5),
