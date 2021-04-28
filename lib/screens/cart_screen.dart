@@ -15,9 +15,11 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   CartData cartData = CartData();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       key: _scaffoldKey,
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: Text("Meu carrinho"),
@@ -41,7 +43,13 @@ class _CartScreenState extends State<CartScreen> {
                 ResumeTile(cartData.products),
                 RaisedButton(
                   onPressed: () async {
-                    await cartData.finishOrder(UserModel.of(context).firebaseUser.uid, cartData.idSupplier);
+                    String idOrder = await cartData.finishOrder(UserModel.of(context).firebaseUser.uid, cartData.idSupplier);
+                    if (idOrder.isNotEmpty){
+                      cartData.clear();
+                      _showSucessOrder(idOrder);
+                    } else{
+                      _showFailOrder();
+                    }
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -62,6 +70,27 @@ class _CartScreenState extends State<CartScreen> {
         },
       ),
     );
+  }
+
+  void _showSucessOrder(String idOrder){
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+      content: Text("Pedido recebido com o ID: ${idOrder}", style: TextStyle(fontSize: 18),),
+      backgroundColor: Theme.of(context).primaryColor,
+      duration: Duration(seconds: 2),
+    ));
+    Future.delayed(Duration(seconds: 2)).then((_) {
+      Navigator.of(context).pop();
+    });
+  }
+   void _showFailOrder(){
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+      content: Text("Pedido não efetuado, tente novamente", style: TextStyle(fontSize: 18),),
+      backgroundColor: Colors.red,
+      duration: Duration(seconds: 2),
+    ));
+    Future.delayed(Duration(seconds: 2)).then((_) {
+      Navigator.of(context).pop();
+    });
   }
 
   void attFunction() {

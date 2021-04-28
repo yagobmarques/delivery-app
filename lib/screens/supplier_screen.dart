@@ -18,11 +18,15 @@ class SupplierScreen extends StatelessWidget {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-            onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              CartScreen()));
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => CartScreen()));
             },
+            backgroundColor: Theme.of(context).primaryColor,
+            child: Icon(
+              Icons.shopping_cart_outlined,
+            ),
+            elevation: 4,
           ),
       body: FutureBuilder<QuerySnapshot>(
         future: Firestore.instance

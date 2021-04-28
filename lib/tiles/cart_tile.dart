@@ -66,6 +66,7 @@ class _CartTileState extends State<CartTile> {
             ),
             // ignore: deprecated_member_use
             RaisedButton(
+              elevation: 10,
               onPressed: () {
                   CartData().removeProduct(widget.productData.idProduct);
                   widget.attFunction();

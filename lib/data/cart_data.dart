@@ -51,14 +51,22 @@ class CartData {
       {
         "clientId":idClient,
         "supplierId": idSupplier,
-        "productsQuantity": products.map((product)=>{product.idProduct: product.un}).toList(),
-        "productsPrice": products.map((product) => {product.idProduct: product.price}).toList(),
+        //"productsQuantity": products.map((product)=>{product.idProduct: product.un}).toList(),
+        "products": products.map((product) => {
+          "idProduct": product.idProduct,
+          "idSupplier" : product.idSupplier,
+          "image": product.image,
+          "name": product.name,
+          "price": product.price,
+          "un": product.un,
+        }).toList(),
         "productsTotalPrice": productsPrice,
         "deliveryPrice": deliveryPrice,
         "totalPrice": productsPrice + deliveryPrice,
+        "dateOrder": DateTime.now(),
         "status": 1
       });
-      return "OK";
+      return refOrder.documentID;
   }
   double getAmountPrice(List<ProductData> productData){
     double amountPrice = 0;
