@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:delivery_app/models/user_model.dart';
+import 'package:delivery_app/tiles/null_tile.dart';
 import 'package:delivery_app/tiles/order_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,11 @@ class OrderTab extends StatelessWidget {
           return Center(child: Text("Sem pedidos cadastrados"),);
         } else{
           dynamic orderTiles = snapshot.data.documents.map((doc) {
-            return OrderTile(doc.documentID);}).toList().reversed.toList();
+            if(doc.data["clientId"]== UserModel.of(context).firebaseUser.uid){
+              return OrderTile(doc.documentID);
+            }
+            return NullTile();
+            }).toList().reversed.toList();
           return ListView(
             padding: EdgeInsets.all(10),
             children: orderTiles);

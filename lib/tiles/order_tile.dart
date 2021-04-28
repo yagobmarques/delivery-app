@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:delivery_app/screens/order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -24,11 +25,7 @@ class OrderTile extends StatelessWidget {
           return SizedBox(
             height: 220,
             child: InkWell(
-              onTap: () {
-                //   Navigator.of(context).push(
-                //   MaterialPageRoute(builder: (context)=>SupplierScreen(snapshot))
-                // );
-              },
+              onTap: () {},
               child: Container(
                 padding: EdgeInsets.all(10),
                 margin: EdgeInsets.only(bottom: 5),

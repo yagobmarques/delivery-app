@@ -57,7 +57,9 @@ class HomeTab extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(25)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.jumpToPage(1);
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -80,7 +82,9 @@ class HomeTab extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(25)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.jumpToPage(2);
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -104,7 +108,7 @@ class HomeTab extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(25)),
                     ),
                     onPressed: () {
-                      this.controller.jumpToPage(1);
+                      this.controller.jumpToPage(3);
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
